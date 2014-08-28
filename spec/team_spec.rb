@@ -12,4 +12,10 @@ describe Team do
 		expect(test_team.players).to eq [test_player]
 		expect(test_game.teams).to eq [test_team]
 	end
-end
+
+	it "changes the team name to lowercase before it saves" do
+		test_team = Team.create({:name => 'New Jack City'})
+		expect(test_team.name).to eq 'new jack city'
+	end
+
+end 
