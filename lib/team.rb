@@ -3,6 +3,7 @@ class Team < ActiveRecord::Base
 	belongs_to :game
 	belongs_to :division
 	before_save	:downcase_name
+	validates :name, :presence => true
 
 	
 	private

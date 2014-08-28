@@ -18,4 +18,10 @@ describe Team do
 		expect(test_team.name).to eq 'new jack city'
 	end
 
+	it "validates the presence of a name " do
+		test_team = Team.create({:name => ''})
+		expect(test_team.save).to eq false
+	end
+
+
 end 
