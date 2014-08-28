@@ -1,3 +1,4 @@
+require 'active_record'
 require 'league'
 require 'division'
 require 'team'
