@@ -12,4 +12,6 @@ class Team < ActiveRecord::Base
 		self.name = self.name.downcase
 	end
 
+	scope :black, -> { where( color: 'black' ) }
+
 end

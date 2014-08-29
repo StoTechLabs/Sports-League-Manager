@@ -23,5 +23,10 @@ describe Team do
 		expect(test_team.save).to eq false
 	end
 
+	it "should be able to narrow the search of a team by colors" do
+		test_team = Team.create({:name => 'New Jack City', :color => 'black'})
+		test_team2 = Team.create({:name => "Josh's Cowboys", :color => 'Blue'})
+		expect(Team.black).to eq [test_team] 
+	end
 
 end 
