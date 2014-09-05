@@ -101,10 +101,44 @@ def division_menu
       puts "That was not a valid entry"
     end
   end
-  
-  
 end
 
-
+def team_menu
+  puts "***TEAM MENU***"
+  puts "\n*** TEAM MENU ***\n\n"
+  choice = nil
+  until choice == 'e'
+    puts "Press 'a' to create a Team, 'l' to list all Teams, 'r' return to Main menu"
+    puts "Press 'e' to exit"
+    choice = gets.chomp
+    case choice
+    when 'a'
+      puts "Enter the name of the team"
+      team_name = gets.chomp
+      puts "Enter the color of the team"
+      team_color = gets.chomp
+      new_team = Team.create({:name => team_name, :color => team_color})
+      puts "Now type the name of the division that you want to add this team to from the list below."
+      puts "\n"
+      Division.all.each { |division| puts division.name }
+      puts "\n"
+      @division_choice = gets.chomp
+      Division.all.each do |division|
+        if division.name == @division_choice
+          @division_choice = division
+        end
+      end
+      @division_choice.teams << new_team
+      puts "Team added!"
+    when 'l'
+      Team.all.each { |team| puts team.name }
+    when 'r'
+      main_menu
+    when 'e'
+      exit
+    else
+      puts "That was not a valid entry"
+    end
+  end
+end
 main_menu
-
