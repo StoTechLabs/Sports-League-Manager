@@ -15,7 +15,8 @@ def main_menu
   puts "[1] League Menu"
   puts "[2] Division Menu"
   puts "[3] Team Menu"
-  puts "[4] Game Menu"
+  puts "[4] Player Menu"
+  puts "[5] Game Menu"
   puts "[x] Exit"
   puts "\n"
   puts "Enter the number of a menu choice to continue"
@@ -27,7 +28,9 @@ def main_menu
   elsif user_input == '3'
     team_menu
   elsif user_input == '4'
-  	game_menu
+  	player_menu
+  elsif user_input == '5'
+    game_menu
   elsif user_input == 'x'
     puts "Thanks for using SLM. Have a great day!"
     exit
@@ -39,8 +42,7 @@ def main_menu
 end
 
 def league_menu
-  puts "***LEAGUE MENU***"
-  puts "\n*** EMPLOYEE MENU ***\n\n"
+  puts "\n*** LEAGUE MENU ***\n\n"
   choice = nil
   until choice == 'e'
     puts "Press 'a' to create a league, 'l' to list all leagues,'r' return to Main menu"
@@ -67,8 +69,7 @@ def league_menu
 end
 
 def division_menu
-  puts "***DIVISION MENU***"
-  puts "\n*** EMPLOYEE MENU ***\n\n"
+  puts "\n***DIVISION MENU ***\n\n"
   choice = nil
   until choice == 'e'
     puts "Press 'a' to create a Division, 'l' to list all Divisions, 'r' return to Main menu"
@@ -104,7 +105,6 @@ def division_menu
 end
 
 def team_menu
-  puts "***TEAM MENU***"
   puts "\n*** TEAM MENU ***\n\n"
   choice = nil
   until choice == 'e'
@@ -141,4 +141,46 @@ def team_menu
     end
   end
 end
+
+
+def player_menu
+  puts "\n*** PLAYER MENU ***\n\n"
+  choice = nil
+  until choice == 'e'
+    puts "Press 'a' to register a player, 'l' to list all players, 'r' return to Main menu"
+    puts "Press 'e' to exit"
+    choice = gets.chomp
+    case choice
+    when 'a'
+      puts "Enter the full name of the player"
+      player_name = gets.chomp
+      new_player = Player.create({:name => player_name})
+      puts "Now type the name of the team that you want to add this player to to from the list below."
+      puts "\n"
+      Team.all.each { |team| puts team.name }
+      puts "\n"
+      @team_choice = gets.chomp
+      Team.all.each do |team|
+        if team.name == @team_choice
+          @team_choice = team
+        end
+      end
+      @team_choice.players << new_player
+      puts "player added!"
+    when 'l'
+      Player.all.each { |player| puts player.name }
+    when 'r'
+      main_menu
+    when 'e'
+      exit
+    else
+      puts "That was not a valid entry"
+    end
+  end
+end
+
+
+
+
+
 main_menu
