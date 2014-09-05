@@ -3,7 +3,7 @@ require 'pry'
 
 describe Team do
 	it "should show players and games" do
-		test_team = Team.create({:name => 'New Jack City'})		
+		test_team = Team.create({:name => 'New Jack City'})
 		test_player = Player.create({:name => "Nino Brown"})
 		game_date = DateTime.parse('2014-07-29 ')
 		test_game = Game.create({:date => game_date})
@@ -26,7 +26,7 @@ describe Team do
 	it "should be able to narrow the search of a team by colors" do
 		test_team = Team.create({:name => 'New Jack City', :color => 'black'})
 		test_team2 = Team.create({:name => "Josh's Cowboys", :color => 'Blue'})
-		expect(Team.black).to eq [test_team] 
+		expect(Team.black).to eq [test_team]
 	end
 
-end 
+end
