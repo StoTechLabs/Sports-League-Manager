@@ -179,6 +179,54 @@ def player_menu
   end
 end
 
+def game_menu
+  puts "\n*** GAME MENU ***\n\n"
+  choice = nil
+  until choice == 'e'
+    puts "Press 'a' to add a game to the schedule, 'l' to list all game dates, 'r' return to Main menu"
+    puts "Press 'e' to exit"
+    choice = gets.chomp
+    case choice
+    when 'a'
+      puts "Enter the date of your new game in the this format 'yyyy-mm-dd'"
+      game_date = gets.chomp
+      new_game = Game.create({:date => game_date})
+      puts "Now type the name of the first team that you want to play on this date to to from the list below."
+      puts "\n"
+      Team.all.each { |team| puts team.name }
+      puts "\n"
+      @team_choice = gets.chomp
+      Team.all.each do |team|
+        if team.name == @team_choice
+          @team_choice = team
+        end
+      end
+      new_game.teams << @team_choice
+      puts "team added!"
+      sleep(2.0)
+      puts "Now type the name of the second team that you want to play on this date to to from the list below."
+      puts "\n"
+      Team.all.each { |team| puts team.name }
+      puts "\n"
+      @team_choice = gets.chomp
+      Team.all.each do |team|
+        if team.name == @team_choice
+          @team_choice = team
+        end
+      end
+      new_game.teams << @team_choice
+      puts "second tead has been added. Game scheduled!"
+    when 'l'
+      Game.all.each { |game| puts game.date }
+    when 'r'
+      main_menu
+    when 'e'
+      exit
+    else
+      puts "That was not a valid entry"
+    end
+  end
+end
 
 
 
