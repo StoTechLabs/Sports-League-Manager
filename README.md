@@ -6,7 +6,7 @@ Sports League Manager
 ####Joshua Storey
 
 
-![Alt text](https://github.com/StoTech21/Sports-League-Manager/blob/master/sql%20design%20SLM.png)
+![Alt text](https://github.com/StoTechLabs/Sports-League-Manager/blob/master/sql%20design%20SLM.png)
 
 ###About:
 This will allow a user to create and organize a sports league.
