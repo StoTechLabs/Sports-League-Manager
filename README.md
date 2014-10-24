@@ -16,7 +16,7 @@ This project is for the [Ruby ActiveRecord assessment](http://www.learnhowtoprog
 In your terminal, clone this repo:
 
 ```console
-$ clone https://github.com/StoTech21/Sports-League-Manager.git
+$ clone https://github.com/StoTechLabs/Sports-League-Manager.git
 ```
 
 Install [postgres](http://www.postgresql.org/download/):
